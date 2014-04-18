@@ -13,20 +13,23 @@
     <%= link_to "Add a Property to Rent", new_property_path, class: 'btn btn-success btn-sm' %>
   </div>
   <div class="col-sm-4">
-    <span class="descriptiontext"><p>Filter Properties by:</p></span>
-    <p>
-      <%= form_for @property_filter, as: :property_filter,  method: 'get' do |f|%>
-        <div class="form-group">
-          <%= f.label :location, "Price: " %>
-          <%= f.select :location, options_for_select([["All"], ["Expensive"], ["Reasonable"], ["Cheap"]]) %>
-        </div>
-        <div class="form-group">
-          <%= f.label :rental_type, "Rental Type: " %>
-          <%= f.select :rental_type, options_for_select([["All"], ["Entire Place"], ["Private Room"], ["Shared Room"]]) %>
-        </div>
-        <%= f.submit "Filter", class: 'btn btn-success btn-sm' %>
-      <% end %>
-    </p>
+    <div id="filter-form"
+      <span class="descriptiontext"><p>Filter Properties by:</p></span>
+      <p>
+        <%= form_for @property_filter, as: :property_filter,  method: 'get' do |f|%>
+          <div class="form-group">
+            <%= f.label :location, "Price: ", :class => "control-label" %><br />
+            <%= f.select :location, options_for_select([["All"], ["Expensive"], ["Reasonable"], ["Cheap"]]), :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :rental_type, "Rental Type: " %><br />
+            <%= f.select :rental_type, options_for_select([["All"], ["Entire Place"], ["Private Room"], ["Shared Room"]]) %>
+          </div>
+          <%= f.submit "Filter", class: 'btn btn-success btn-sm' %>
+        <% end %>
+      </p>
+    </div>
   </div>
+
 
 </div>

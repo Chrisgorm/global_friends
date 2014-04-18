@@ -1,7 +1,7 @@
 require 'pry'
 
 class PropertiesController < ApplicationController
-
+  before_action :authenticate_user!, :except => [:index, :show]
   def index
     @properties = Property.all
     @property_filter = Property.new
