@@ -4,20 +4,21 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = Property.all
+    @property_filter = Property.new
 
-    if params[:property].present?
-      if params[:property][:rental_type] != "All"
+    if params[:property_filter].present?
+      if params[:property_filter][:rental_type] != "All"
         @properties = @properties.where(rental_type: params[:property][:rental_type])
       end
       # this uses the location name not because it is location, but because there is no single field that holds a string for price.
-      if params[:property][:location] == "Expensive"
-        @properties = @properties.where("price_day >= 50")
+      if params[:property_filter][:location] == "Expensive"
+        @properties = @properties.where("price_day >= 5000")
       end
-      if params[:property][:location] == "Reasonable"
-        @properties = @properties.where("price_day < 50 AND price_day > 20")
+      if params[:property_filter][:location] == "Reasonable"
+        @properties = @properties.where("price_day < 5000 AND price_day > 2000")
       end
-      if params[:property][:location] == "Cheap"
-        @properties = @properties.where("price_day <= 50")
+      if params[:property_filter][:location] == "Cheap"
+        @properties = @properties.where("price_day <= 2000")
       end
     end
   end
@@ -51,9 +52,11 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
-    picture = @property.pictures.new(:user_id => params[:property][:user_id], :property_id => @property.id)
-    picture.image = params[:property][:image]
-    picture.save
+    if !params[:property][:image].nil?
+      picture = @property.pictures.new(:user_id => params[:property][:user_id], :property_id => @property.id)
+      picture.image = params[:property][:image]
+      picture.save
+    end
     if @property.update(property_params)
       flash[:notice] = "Your property was updated! Thank you for keeping its information current!"
       redirect_to property_path(@property)
