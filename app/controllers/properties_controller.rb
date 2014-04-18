@@ -8,7 +8,7 @@ class PropertiesController < ApplicationController
 
     if params[:property_filter].present?
       if params[:property_filter][:rental_type] != "All"
-        @properties = @properties.where(rental_type: params[:property][:rental_type])
+        @properties = @properties.where(rental_type: params[:property_filter][:rental_type])
       end
       # this uses the location name not because it is location, but because there is no single field that holds a string for price.
       if params[:property_filter][:location] == "Expensive"
