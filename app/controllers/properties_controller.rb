@@ -36,7 +36,10 @@ class PropertiesController < ApplicationController
     end
     if @property.save
       flash[:notice] = "Your property was uploaded!  Please hold tight while we verify all the information! (Should take less than 36 months)"
-      redirect_to property_path(@property)
+      respond_to do |format|
+        format.html { redirect_to property_path(@property) }
+        format.js
+      end
     else
       render 'new'
     end

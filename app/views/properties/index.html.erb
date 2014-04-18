@@ -10,7 +10,7 @@
       <%= property.description %></p>
     <% end %>
 
-    <%= link_to "Add a Property to Rent", new_property_path, class: 'btn btn-success btn-sm' %>
+    <%= link_to "Add a Property to Rent", new_property_path, class: 'btn btn-success btn-sm', remote: true %>
   </div>
   <div class="col-sm-4">
     <span class="descriptiontext"><p>Filter Properties by:</p></span>
