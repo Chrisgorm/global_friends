@@ -9,24 +9,24 @@
 <body>
   <div class="container">
 
-  <div class="navbar navbar-default navbar-fixed-top">
-    <%= link_to "GlobalFriends™", root_url, class: "navbar-text pull-left", id: 'logo' %>
-    <% if user_signed_in? %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "sessiontext navbar-text pull-right" %>
-      <%= link_to 'Edit profile', edit_user_registration_path, class: "navbar-text pull-right sessiontext" %>
-      <span class="navbar-text pull-right sessiontext">Logged in as <strong><%= current_user.email %></strong>.</span>
-    <% else %>
-      <%= link_to "Login", new_user_session_path, class: "navbar-text pull-right sessiontext" %>
-      <%= link_to "Sign up", new_user_registration_path, class: "navbar-text pull-right sessiontext" %>
-    <% end %>
-  </div>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <%= link_to "GlobalFriends™", root_url, class: "navbar-text pull-left", id: 'logo' %>
+      <% if user_signed_in? %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "sessiontext navbar-text pull-right" %>
+        <%= link_to 'Edit profile', edit_user_registration_path, class: "navbar-text pull-right sessiontext" %>
+        <span class="navbar-text pull-right sessiontext">Logged in as <strong><%= current_user.email %></strong>.</span>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "navbar-text pull-right sessiontext" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "navbar-text pull-right sessiontext" %>
+      <% end %>
+    </div>
 
-  <div class="content">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="content">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </div>
-</div>
 </body>
 </html>

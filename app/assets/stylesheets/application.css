@@ -27,6 +27,7 @@ a#logo:hover {
 
 .content {
   margin-top: 85px;
+  margin-bottom: 65px;
 }
 
 .sessiontext {
@@ -34,9 +35,40 @@ a#logo:hover {
 }
 
 .descriptiontext {
-  color: slategray;
+  color: #2c3e50;
 }
 
 #prop-scan {
   margin-top: 45px;
 }
+
+#filter-form {
+  margin: 10px 20% 200px auto;
+  background-color: sandybrown;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#filter-form .btn{
+  color: #2c3e50;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
